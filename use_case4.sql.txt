@@ -1,0 +1,33 @@
+CREATE TABLE BOOKS(
+    book_id INT PRIMARY KEY,
+    isbn CHAR(13) UNIQUE,
+    title VARCHAR(200) NOT NULL,
+    author_name VARCHAR(120) NOT NULL,
+    genre VARCHAR(60) NOT NULL,
+    publisher VARCHAR(120) NOT NULL,
+    publication_year SMALLINT NOT NULL,
+    page_count SMALLINT NOT NULL,
+    book_format VARCHAR(20) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    copies_available INT NOT NULL,
+    language VARCHAR(40) NOT NULL,
+    added TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT chk_publication_year_between_1000_2100 CHECK (publication_year BETWEEN 1000 AND 2100),
+    CONSTRAINT chk_page_count_greater_than_0 CHECK (page_count > 0),
+    CONSTRAINT chk_price_non_negative CHECK (price >= 0),
+    CONSTRAINT chk_copies_available_non_negative CHECK (copies_available >= 0)
+);
+
+INSERT INTO BOOKS(book_id, isbn, title, author_name, genre, publisher, publication_year, page_count, book_format, price, copies_available, language, added)
+VALUES (1, '9780451524935', 'The Bible', 'Various Authors', 'Religious', 'Oxford University Press', 1611, 1200, 'Hardcover', 800.00, 15, 'English', CURRENT_TIMESTAMP);
+
+INSERT INTO BOOKS(book_id, isbn, title, author_name, genre, publisher, publication_year, page_count, book_format, price, copies_available, language, added)
+VALUES (2, '9780141439518', 'The Little Prince', 'Antoine de Saint-Exupery', 'Children', 'Mariner Books', 1943, 96, 'Paperback', 299.00, 10, 'English', CURRENT_TIMESTAMP);
+
+INSERT INTO BOOKS(book_id, isbn, title, author_name, genre, publisher, publication_year, page_count, book_format, price, copies_available, language, added)
+VALUES (3, '9780141439600', 'Pride and Prejudice', 'Jane Austen', 'Romance', 'Penguin Classics', 1813, 432, 'Paperback', 399.00, 8, 'English', CURRENT_TIMESTAMP);
+
+INSERT INTO BOOKS(book_id, isbn, title, author_name, genre, publisher, publication_year, page_count, book_format, price, copies_available, language, added)
+VALUES (4, '9780061120060', 'Alice in Wonderland', 'Lewis Carroll', 'Fantasy', 'Macmillan Publishers', 1865, 200, 'Paperback', 350.00, 10, 'English', CURRENT_TIMESTAMP);
+
+SELECT * FROM BOOKS;

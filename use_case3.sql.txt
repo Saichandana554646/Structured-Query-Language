@@ -1,0 +1,43 @@
+CREATE TABLE CUSTOMERS (
+    customer_id INT PRIMARY KEY AUTO_INCREMENT,
+    customer_code VARCHAR(12) NOT NULL UNIQUE,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(120) NOT NULL UNIQUE,
+    phone VARCHAR(15) UNIQUE,
+    date_of_birth DATE,
+    city VARCHAR(80) NOT NULL,
+    state VARCHAR(80) NOT NULL,
+    postal_code VARCHAR(12) NOT NULL,
+    customer_type VARCHAR(15) NOT NULL DEFAULT 'REGULAR',
+    credit_limit DECIMAL(12,2) NOT NULL DEFAULT 0.00,
+    is_active BOOLEAN NOT NULL DEFAULT TRUE,
+    registered_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CHECK (customer_type IN ('REGULAR', 'PREMIUM', 'CORPORATE')),
+    CHECK (credit_limit >= 0)
+);
+
+SELECT * FROM CUSTOMERS;
+
+INSERT INTO CUSTOMERS
+(customer_code, first_name, last_name, email, phone, date_of_birth, city, state, postal_code, customer_type, credit_limit, is_active)
+VALUES
+('ST627', 'Sai', 'Chandana', 'saichandanaatiketi@gmail.com', '9182785734', '2004-10-01', 'Hyderabad', 'Telangana', '504263', 'REGULAR', 10000.00, TRUE);
+
+INSERT INTO CUSTOMERS
+(customer_code, first_name, last_name, email, phone, date_of_birth, city, state, postal_code, customer_type, credit_limit, is_active)
+VALUES
+('ST628', 'Arjun', 'Kumar', 'arjun@gmail.com', NULL, '2003-05-15', 'Hyderabad', 'Telangana', '500001', 'REGULAR', 5000.00, TRUE);
+
+INSERT INTO CUSTOMERS
+(customer_code, first_name, last_name, email, phone, date_of_birth, city, state, postal_code, customer_type, credit_limit, is_active)
+VALUES
+('ST629', 'Anita', 'Reddy', 'anita@gmail.com', NULL, '2002-08-20', 'Warangal', 'Telangana', '506001', 'PREMIUM', 8000.00, TRUE);
+
+
+INSERT INTO CUSTOMERS
+(customer_code, first_name, last_name, email, phone, date_of_birth, city, state, postal_code, customer_type, credit_limit, is_active)
+VALUES
+('ST630', 'John', 'Smith', 'john@gmail.com', '9182342263', '2001-03-10', 'Hyderabad', 'Telangana', '500003', 'REGULAR', 3000.00, TRUE);
+
+SELECT * FROM CUSTOMERS;
