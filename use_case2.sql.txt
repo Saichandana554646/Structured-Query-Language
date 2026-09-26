@@ -1,7 +1,7 @@
 USE cdg_hyd_jfs_058;
 DROP TABLE PRODUCTS;
 CREATE TABLE PRODUCTS (
-    product_id INT PRIMARY KEY AUTO_INCREMENT,
+    product_id INT AUTO_INCREMENT,
     sku VARCHAR(20) NOT NULL UNIQUE,
     product_name VARCHAR(150) NOT NULL,
     category VARCHAR(80) NOT NULL,
@@ -12,13 +12,15 @@ CREATE TABLE PRODUCTS (
     manufacture_date DATE,
     expiry_date DATE,
     product_status VARCHAR(15) NOT NULL DEFAULT 'ACTIVE',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 
-    CHECK (unit_price > 0),
-    CHECK (expiry_date IS NULL OR 
-            manufacture_date IS NULL 
-            OR expiry_date >= manufacture_date)
+    CONSTRAINT `pk_PRODUCTS_product_id` PRIMARY KEY (product_id),
+    CONSTRAINT `uq_sku` UNIQUE (sku),
+    CONSTRAINT `chk_unique_price` CHECK (unit_price > 0),
+    CONSTRAINT `chk_quantity_in_stock` CHECK (quantity_in_stock >= 0),
+    CONSTRAINT `chk_reorder_level` CHECK (reorder_level >= 0),
+    CONSTRAINT `chk_expiry_date` CHECK (expiry_date IS NULL OR manufacture_date IS NULL OR expiry_date > manufacture_date)
 );
 
 SELECT * FROM PRODUCTS;
