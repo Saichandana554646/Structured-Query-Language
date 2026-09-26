@@ -1,5 +1,6 @@
 USE cdg_hyd_jfs_058;
-CREATE TABLE products (
+DROP TABLE PRODUCTS;
+CREATE TABLE PRODUCTS (
     product_id INT PRIMARY KEY AUTO_INCREMENT,
     sku VARCHAR(20) NOT NULL UNIQUE,
     product_name VARCHAR(150) NOT NULL,
@@ -22,28 +23,10 @@ CREATE TABLE products (
 
 SELECT * FROM PRODUCTS;
 
--- Normal product
-INSERT INTO products
-(product_id, sku, product_name, category, brand, unit_price, quantity_in_stock,
- reorder_level, manufacture_date, expiry_date)
-VALUES
-(1, 'SKU01', 'Note Book', 'Stationery', 'Classmate', 58.00, 50,
- 5, '2026-01-10', '2028-01-10');
+INSERT INTO products (product_id, sku, product_name, category, brand, unit_price, quantity_in_stock, reorder_level, manufacture_date, expiry_date) VALUES (1, 'SKU01', 'Note Book', 'Stationery', 'Classmate', 58.00, 50, 5, '2026-01-10', '2028-01-10');
 
--- Product without expiry date
-INSERT INTO products
-(product_id, sku, product_name, category, brand, unit_price, quantity_in_stock,
- reorder_level, manufacture_date, expiry_date)
-VALUES
-(2, 'SKU02', 'Jeans', 'Clothing', 'Wrangler', 2500.00, 20,
- 5, '2026-02-15', NULL);
+INSERT INTO PRODUCTS (product_id, sku, product_name, category, brand, unit_price, quantity_in_stock, reorder_level, manufacture_date, expiry_date) VALUES (2, 'SKU02', 'Jeans', 'Clothing', 'Wrangler', 2500.00, 20, 5, '2026-02-15', NULL);
 
- INSERT INTO products
-(sku, product_name, category, brand, unit_price,
- quantity_in_stock, reorder_level, manufacture_date, expiry_date)
-VALUES
-(3, 'SKU03', 'Keyboard', 'Accessories', 'HP', -500.00,
- 10, 5, '2026-03-01', '2028-03-01');
-
+INSERT INTO PRODUCTS (sku, product_name, category, brand, unit_price, quantity_in_stock, reorder_level, manufacture_date, expiry_date) VALUES (3, 'SKU03', 'Keyboard', 'Accessories', 'HP', -500.00, 10, 5, '2026-03-01', '2028-03-01');
 
  SELECT * FROM PRODUCTS;
