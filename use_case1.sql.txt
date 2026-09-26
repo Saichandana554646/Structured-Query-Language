@@ -13,6 +13,7 @@ CREATE TABLE students (
     student_status VARCHAR(15) NOT NULL DEFAULT 'Active',
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	CONSTRAINT `pr_student_id` PRIMARY KEY (student_id),
 	CONSTRAINT `uq_admission_number` UNIQUE (admission_number),
 	CONSTRAINT `uq_email` UNIQUE (email),
 	CONSTRAINT `chk_cgpa` CHECK (cgpa BETWEEN 0.00 AND 10.00)
@@ -21,13 +22,13 @@ CREATE TABLE students (
 SELECT * FROM students;
 
 INSERT INTO students
-VALUES(1, 514, 'Sai', 'Chandana', 'saichandanaatiketi@gmail.com', '9182342262', 
+VALUES(1, 514, 'Sai', 'Chandana', 'saichandanaatiketi@gmail.com', '9872637281', 
         '2004-10-01', 'CSE', '2026-07-11', 9.00, 'Active', 
         '2026-10-28 12:14:00', '2026-02-23 09:30:45');
 
 
 INSERT INTO students
-VALUES(2, 510, 'Sri', 'Satya', 'satya@gmail.com', '7736896308', 
+VALUES(2, 510, 'Sri', 'Satya', 'satya@gmail.com', '9347210232', 
         '2003-10-11', 'AIML', '2026-05-15', 8.56, 'Active', 
         '2026-02-07 17:13:00', '2026-02-23 09:30:45');
 
@@ -36,10 +37,7 @@ VALUES(3, 550, 'Maha', 'Lakshmi', 'maha@gmail.com', '6305625182',
         '2003-04-11', 'DS', '2026-05-15', 8.56, 'Active', 
         '2026-10-28 10:14:00', '2026-02-23 09:30:45');
 
-INSERT INTO students
-VALUES(4, 543, 'Lily', 'Pushpa', 'lily@gmail.com', '7736138548', 
-        '2003-12-05', 'IT', '2026-05-15', 8.56, 'Active', 
-        '2026-10-28 16:38:00', '2026-02-23 09:30:45');
+INSERT INTO students (student_id, admission_number, first_name, last_name, email, phone, date_of_birth, program_name, admission_date, cgpa) VALUES (4, 543, 'Lily', 'Pushpa', 'lily@gmail.com', '7736138548', '2003-12-05', 'IT', '2026-05-15', 8.56);
 
 
 SELECT * FROM students;
