@@ -1,9 +1,9 @@
 CREATE TABLE CUSTOMERS (
-    customer_id INT PRIMARY KEY AUTO_INCREMENT,
-    customer_code VARCHAR(12) NOT NULL UNIQUE,
+    customer_id INT AUTO_INCREMENT,
+    customer_code VARCHAR(12) NOT NULL,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
-    email VARCHAR(120) NOT NULL UNIQUE,
+    email VARCHAR(120) NOT NULL,
     phone VARCHAR(15) UNIQUE,
     date_of_birth DATE,
     city VARCHAR(80) NOT NULL,
@@ -13,8 +13,12 @@ CREATE TABLE CUSTOMERS (
     credit_limit DECIMAL(12,2) NOT NULL DEFAULT 0.00,
     is_active BOOLEAN NOT NULL DEFAULT TRUE,
     registered_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CHECK (customer_type IN ('REGULAR', 'PREMIUM', 'CORPORATE')),
-    CHECK (credit_limit >= 0)
+
+    CONSTRAINT `uk_customer_code` UNIQUE (customer_code),
+    CONSTRAINT `uk_email` UNIQUE (email),
+    CONSTRAINT `uk_phone` UNIQUE (phone),
+    CONSTRAINT `pk_customers_customer_id` PRIMARY KEY (customer_id),
+    CONSTRAINT `chk_creidt_limit_non_negative` CHECK (credit_limit >= 0.00)
 );
 
 SELECT * FROM CUSTOMERS;
