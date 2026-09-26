@@ -1,4 +1,5 @@
 USE cdg_hyd_jfs_058;
+DROP TABLE COURSES;
 CREATE TABLE COURSES(
     course_id INT UNSIGNED AUTO_INCREMENT NOT NULL,
     course_code VARCHAR(15) NOT NULL,
@@ -17,3 +18,19 @@ CREATE TABLE COURSES(
     CONSTRAINT `chk_courses_delivery_mode` CHECK (delivery_mode IN ('ONLINE', 'CLASSROOM', 'HYBRID')),
     CONSTRAINT `chk_courses_status` CHECK (course_status IN ('DRAFT', 'ACTIVE', 'INACTIVE', 'ARCHIVED'))
 );
+
+SELECT * FROM COURSES;
+
+INSERT INTO COURSES (course_code, course_title, category, duration_hours, fee, delivery_mode, course_status) VALUES('CRS-JAVA-101', 'Java Fundamentals', 'Programming', 40.0, 6000.00, 'CLASSROOM', 'ACTIVE');
+
+INSERT INTO COURSES (course_code, course_title, category, duration_hours, fee, delivery_mode, course_status) VALUES('CRS-SQL-102', 'MySQL Essentials', 'Database', 32.0, 4500.00, 'ONLINE', 'ACTIVE');
+
+INSERT INTO COURSES (course_code, course_title, category, duration_hours, fee, delivery_mode, course_status) VALUES('CRS-WEB-103', 'Responsive Web Design', 'Web Development', 28.0, 0.00, 'ONLINE', 'DRAFT');
+
+INSERT INTO COURSES (course_code, course_title, category, duration_hours, fee, delivery_mode, course_status) VALUES('CRS-TST-104', 'Software Testing Basics', 'Testing', 24.0, 3500.00, 'HYBRID', 'ACTIVE');
+
+INSERT INTO COURSES (course_code, course_title, category, duration_hours, fee, delivery_mode, course_status) VALUES('CRS-OLD-105', 'Legacy Systems Overview', 'Technology', 12.0, 2000.00, 'ONLINE', 'ARCHIVED');
+
+SELECT * FROM COURSES;
+
+
